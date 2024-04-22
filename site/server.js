@@ -29,8 +29,6 @@ app.get('/api/data', (req, res) => {
 });
 
 
-
-
 app.get('/user/:userId', async (req, res) => {
     // Hayley, get the username and password from the userId
     // to do this user something like: const username = sql.query("select username where id = req.params.userId");
@@ -49,51 +47,47 @@ app.get('/user/:userId', async (req, res) => {
 
 });
 
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/login.html'));
 });
 
 app.post('/login', (req, res) => {
-    const username = req.body.username; 
-    const password = req.body.password;
-    const query = 'SELECT * FROM users WHERE name = ?';
+    let username = req.body.username; 
+    let password = req.body.password;
+    let query = `SELECT * FROM users WHERE name = "${username}" AND password = "${password}"`;
     // This will get the username and password (Hayley needs to figure out how to then check these values from the database)
     // You will need to make find if the username and password match and then return the ID here. (ensure when making the DB that the ID column is the PK and unique)
     // once u got the id, reroute the user to the user profile page
     // Sure thing.
     const userId = null;
-
-    db.get(query, [username], (err, row) => {
-        if (err) {
+    db.get(query, (err, row) => {
+       if (err) {
             
             res.status(500).send('Database error');
             return;
         }
+        console.log(row)
         if (row) {
-            // Compare the password submitted with the one in the database
-            if (row.password === password) {
-                let userId = row.id;
-                //res.redirect(`/user/${userId}`);
-                console.log(username)
-                if (username === "admin") {
-                    console.log('correct admin')
-                    res.redirect(`/user/${userId}`);
-                } else {
-                    console.log('user')
-                    res.redirect('/user');
-                }
-                
+            let userId = row.id;
+            if (username === "admin") {
+                console.log('correct admin')
+                res.redirect(`/user/${userId}`);
             } else {
-                console.log('invalid password')
-                res.redirect('/');
+                console.log('user')
+                res.redirect('/user');
             }
+                
         } else {
+            console.log('invalid password')
             res.send('User not found');
         }
     });
 
 
 });
+
+
 
 app.get('/search', (req, res) => {
     const searchQuery = req.query.q;
