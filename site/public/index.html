@@ -51,8 +51,14 @@
 <body>
     <div class="form-group">
         <!-- Search bar -->
-        <input type="text" id="Keyword" placeholder="Keyword..">
-        <button type="button" id="search_button">Search</button>
+        <form action="/search" method="GET">
+            <input type="text" id="search" name="q"  placeholder="Search..">
+            <button type="submit" id="search_button">Search</button>
+        </form>
+    </div>
+
+    <div id="searchResults">
+        <!-- Search results displayed here -->
     </div>
 
     <div class="form-group">
