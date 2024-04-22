@@ -1,4 +1,8 @@
 # COMS4507-Project
+<h2>Description</h2>
+
+This project aims to setup a basic web application which posseses each of the top three web-app vulnerabilities as of 2021 according to [OWASP](https://owasp.org/www-project-top-ten/) top 10. Consequently, this site is extremely unsecure and will be the basis for our further analysis as to how Large-Language-Models (LLM's) can assist in first identifying and then patching simple vulnerabilities, which will be evaluated through asking another LLM, specifically [PentestPGT](https://github.com/GreyDGL/PentestGPT) to attempt to exploit the 'patched' version of the web-app.
+
 <h2>Requirements</h2>
 
 1. [Node.js](https://nodejs.org/en/download/current)
