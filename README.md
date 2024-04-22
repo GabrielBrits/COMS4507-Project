@@ -52,7 +52,7 @@ However, it is evident that this is working through an ID variable in the URL, c
 
 <h2>Cryptographic Failure (Specifically accessed through SQLi)</h2>
 
-How [OWASP]([url](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)) describes Crypto Graphic Failures:
+How [OWASP]([url](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)) describes Cryptographic Failures:
 > Failures related to cryptography (or lack thereof). Which often lead to exposure of sensitive data.
 
 <h4>Example Exploit</h4>
