@@ -27,19 +27,38 @@ If successful, you should see the following message: Server listening at localho
 
 <h2>Vulnerabilities</h2>
 <h3>Broken Access Control</h3>
-Description
+
+How [OWASP](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) describes Broken Access Control:
+> Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data or performing a business function outside the user's limits.
 
 <h4>Example Exploit</h4>
 Description
 
-<h3>SQL Injection</h3>
-Description
+<h3>Cryptographic Failure (Specifically accessed through SQLi)</h3>
+
+How [OWASP]([url](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)) describes Crypto Graphic Failures:
+> Failures related to cryptography (or lack thereof). Which often lead to exposure of sensitive data.
 
 <h4>Example Exploit</h4>
 Description
 
-<h3>XSS</h3>
-Description
+<h3>Injection (Specifically XSS)</h3>
+
+How [OWASP](https://owasp.org/www-community/Injection_Theory) describes Injection:
+> An attacker's attempt to send data to an application in a way that will change the meaning of commands being sent to an interpreter.
 
 <h4>Example Exploit</h4>
-Description
+
+On the homepage of the site there is search functionality:
+
+
+![image](https://github.com/GabrielBrits/COMS4507-Project/blob/main/screenshots/Search.png)
+
+When the following script is entered:
+
+```<script>alert('XSS Attack!');</script>```
+
+We can confirm that there is a Cross Site Scripting vulnerability in the application, which could be further leveraged.
+
+
+![image](https://github.com/GabrielBrits/COMS4507-Project/blob/main/screenshots/XSS.png)
