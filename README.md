@@ -58,7 +58,7 @@ When the following script is entered:
 
 ```<script>alert('XSS Attack!');</script>```
 
-We can confirm that there is a Cross Site Scripting vulnerability in the application, which could be further leveraged.
+We can confirm that there is a Cross Site Scripting vulnerability in the application through the above script. This script only displays an alert detailing 'XSS Attack!', however this confirms to use that we can get the backend of the webapp to execute our own malicious code which could steal cookies to hijack user sessions, inject malware or scan internal ports. 
 
 
 ![image](https://github.com/GabrielBrits/COMS4507-Project/blob/main/screenshots/XSS.png)
