@@ -40,7 +40,9 @@ How [OWASP]([url](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)) des
 > Failures related to cryptography (or lack thereof). Which often lead to exposure of sensitive data.
 
 <h4>Example Exploit</h4>
-Description
+On the login page we are able to utilise SQL injection to access any user account given that we have their email. This can be done through entering the following script into the password field of the form:
+
+```" OR "1"="1```
 
 <h3>Injection (Specifically XSS)</h3>
 
