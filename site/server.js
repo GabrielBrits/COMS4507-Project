@@ -25,7 +25,7 @@ app.post('/login', (req, res) => {
     const username = req.body.username; 
     const password = req.body.password;
     // This will get the username and password (Hayley needs to figure out how to then check these values from the database)
-    // You will need to make find if the username and password match and then return the ID here.
+    // You will need to make find if the username and password match and then return the ID here. (ensure when making the DB that the ID column is the PK and unique)
     // once u got the id, reroute the user to the user profile page
     const userId = null;
     if (userId) {
