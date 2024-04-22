@@ -9,7 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 //const insertData = `INSERT INTO users (name, password) VALUES (?, ?)`;
 
 // Database connection
-let db = new sqlite3.Database('../mydatabase.db', sqlite3.OPEN_READWRITE, (err) => {
+let db = new sqlite3.Database('mydatabase.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
     } else {
@@ -35,13 +35,18 @@ app.get('/user/:userId', async (req, res) => {
     // Hayley, get the username and password from the userId
     // to do this user something like: const username = sql.query("select username where id = req.params.userId");
     // IDRK what you want me to do here so if i havent already created a solution with what ive done let me know
-    const username = null;
-    const password = null;
-    if (username) {
-        res.send(`Username: ${username}<br>Password: ${password}`);
-    } else {
-        res.send('User not found');
-    }
+    const query = 'SELECT * FROM users where id = ?';    
+    const userId = req.params.userId;
+    console.log(userId);
+    db.get(query, [userId], (err, row) => {
+        if (row) {
+            res.send(`Username: ${row.name}<br>Password: ${row.password}`);
+        } else {
+            res.send('Invalid User');
+        }
+        
+    });
+
 });
 
 app.get('/login', (req, res) => {
@@ -68,12 +73,11 @@ app.post('/login', (req, res) => {
             // Compare the password submitted with the one in the database
             if (row.password === password) {
                 let userId = row.id;
-                
                 //res.redirect(`/user/${userId}`);
                 console.log(username)
                 if (username === "admin") {
                     console.log('correct admin')
-                    res.redirect('/admin');
+                    res.redirect(`/user/${userId}`);
                 } else {
                     console.log('user')
                     res.redirect('/user');
@@ -97,7 +101,7 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/login.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 //redirect to the user page
