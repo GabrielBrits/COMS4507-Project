@@ -11,14 +11,21 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+            display:flex; flex-direction:column; justify-content:center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0 auto;
         }
 
         .form-group {
             margin-bottom: 15px;
             display: flex;
             align-items: center; /* Align items vertically */
+        }
+
+        .title {
+            margin-bottom: 20px;
+            font-size: 50px;
         }
 
         #Keyword {
@@ -42,13 +49,11 @@
             background-color: #0056b3;
         }
 
-        #google_translate_element {
-            margin-top: 10px;
-        }
     </style>
 </head>
 
 <body>
+    <div class="title"> Vuln Site! </div>
     <div class="form-group">
         <!-- Search bar -->
         <form action="/search" method="GET">
@@ -62,15 +67,13 @@
     </div>
 
     <div class="form-group">
-        <!-- Logout link -->
-        <a href="#" id="logout_link">Logout</a>
+        <a href="#" id="login_link">Login</a>
     </div>
 
     <script>
-        // JavaScript code to handle logout redirection
-        document.getElementById("logout_link").addEventListener("click", function() {
+        document.getElementById("login_link").addEventListener("click", function() {
             // Redirect to login.html
-            window.location.href = "login.html";
+            window.location.href = "/login";
         });
     </script>
 </body>

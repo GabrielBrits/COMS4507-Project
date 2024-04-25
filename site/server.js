@@ -30,15 +30,51 @@ app.get('/api/data', (req, res) => {
 
 
 app.get('/user/:userId', async (req, res) => {
-    // Hayley, get the username and password from the userId
-    // to do this user something like: const username = sql.query("select username where id = req.params.userId");
-    // IDRK what you want me to do here so if i havent already created a solution with what ive done let me know
     const query = 'SELECT * FROM users where id = ?';    
     const userId = req.params.userId;
     console.log(userId);
     db.get(query, [userId], (err, row) => {
         if (row) {
-            res.send(`Username: ${row.name}<br>Password: ${row.password}`);
+            const html = `
+                <!DOCTYPE html>
+                <style>
+                    body {
+                         margin: 0;
+                         padding: 0;
+                         display: flex;
+                         justify-content: center;
+                         align-items: center;
+                         height: 100vh;
+                    }
+
+                    .container {
+                        text-align: center;
+                    }
+                </style>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>User Profile</title>
+                </head>
+                    <div class="container">
+                        <h1>${row.name}'s Profile</h1>    
+                        <p><strong>Username:</strong> ${row.name}</p>
+                        <p><strong>Password:</strong> ${row.password}</p>
+                        <div class="form-group">
+                            <a href="#" id="logout_link">Logout</a>
+                        </div>
+
+                        <script>
+                            document.getElementById("logout_link").addEventListener("click", function() {
+                                window.location.href = "/";
+                            });
+                        </script>
+                    </div>
+                </body>
+                </html>
+            `;
+            res.send(html);
         } else {
             res.send('Invalid User');
         }
@@ -52,14 +88,14 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/login.html'));
 });
 
+app.get('/login_invalid', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/invalid_login.html'));
+});
+
 app.post('/login', (req, res) => {
     let username = req.body.username; 
     let password = req.body.password;
     let query = `SELECT * FROM users WHERE name = "${username}" AND password = "${password}"`;
-    // This will get the username and password (Hayley needs to figure out how to then check these values from the database)
-    // You will need to make find if the username and password match and then return the ID here. (ensure when making the DB that the ID column is the PK and unique)
-    // once u got the id, reroute the user to the user profile page
-    // Sure thing.
     const userId = null;
     db.get(query, (err, row) => {
        if (err) {
@@ -75,12 +111,12 @@ app.post('/login', (req, res) => {
                 res.redirect(`/user/${userId}`);
             } else {
                 console.log('user')
-                res.redirect('/user');
+                res.redirect('/user/${userId}');
             }
                 
         } else {
             console.log('invalid password')
-            res.send('User not found');
+            res.redirect('/login_invalid');
         }
     });
 
