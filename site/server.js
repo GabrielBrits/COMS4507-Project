@@ -111,7 +111,7 @@ app.post('/login', (req, res) => {
                 res.redirect(`/user/${userId}`);
             } else {
                 console.log('user')
-                res.redirect('/user/${userId}');
+                res.redirect(`/user/${userId}`);
             }
                 
         } else {
