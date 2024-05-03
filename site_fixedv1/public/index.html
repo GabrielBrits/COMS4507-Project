@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display:flex; flex-direction:column; justify-content:center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center; /* Align items vertically */
+        }
+
+        .title {
+            margin-bottom: 20px;
+            font-size: 50px;
+        }
+
+        #Keyword {
+            flex: 1; /* Take up remaining space */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #search_button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #search_button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="title"> Vuln Site! </div>
+    <div class="form-group">
+        <!-- Search bar -->
+        <form action="/search" method="GET">
+            <input type="text" id="search" name="q"  placeholder="Search..">
+            <button type="submit" id="search_button">Search</button>
+        </form>
+    </div>
+
+    <div id="searchResults">
+        <!-- Search results displayed here -->
+    </div>
+
+    <div class="form-group">
+        <a href="/login" id="login_link">Login</a>
+    </div>
+
+    <script>
+        document.getElementById("login_link").addEventListener("click", function() {
+            // Redirect to login.html
+            window.location.href = "/login";
+        });
+    </script>
+</body>
+
+</html>
