@@ -9,7 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 //const insertData = `INSERT INTO users (name, password) VALUES (?, ?)`;
 
 // Database connection
-let db = new sqlite3.Database('mydatabase.db', sqlite3.OPEN_READWRITE, (err) => {
+let db = new sqlite3.Database('prefixmydatabase.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
     } else {
