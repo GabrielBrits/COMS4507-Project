@@ -21,11 +21,15 @@ Change to the COMS4507-Project site (and the other site directories) directory:
 
 Install the projects dependencies using:
 
-``` npm install express --save```
-``` npm install express-session --save```
-``` Npm install express-rate-limit —save```
-``` npm install sqlite3 --save```
-``` npm install bcrypt --save```
+```npm install express --save```
+
+```npm install express-session --save```
+
+```npm install express-rate-limit —save```
+
+```npm install sqlite3 --save```
+
+```npm install bcrypt --save```
 
 And to run the webserver:
 
