@@ -1,7 +1,7 @@
 # COMS4507-Project
 <h2>Description</h2>
 
-This project aims to setup a basic web application which posseses each of the top three web-app vulnerabilities as of 2021 according to [OWASP](https://owasp.org/www-project-top-ten/) top 10. Consequently, this site is extremely unsecure and will be the basis for our further analysis as to how Large-Language-Models (LLM's) can assist in first identifying and then patching simple vulnerabilities, which will be evaluated through asking another LLM, specifically [PentestPGT](https://github.com/GreyDGL/PentestGPT) to attempt to exploit the 'patched' version of the web-app.
+This project aims to setup a basic web application which posseses each of the top three web-app vulnerabilities as of 2021 according to [OWASP](https://owasp.org/www-project-top-ten/) top 10. Consequently, this site is extremely unsecure and will be the basis for our further analysis as to how Large-Language-Models (LLM's) can assist in first identifying and then patching simple vulnerabilities, which will be evaluated through asking another LLM, specifically [PentestPGT](https://github.com/GreyDGL/PentestGPT) to attempt to exploit the 'patched' version of the web-app. There are three site directories, the 'site' directory is the original one which has the three vulnerablities, while the 'site_fixedv1' and 'site_fixedv2' directories include the suggested code fixes for the original vulnerabilties.
 
 <h2>Requirements</h2>
 
@@ -15,21 +15,25 @@ Install the requirements above, then you will want to download the project:
 
 ``` git clone https://github.com/GabrielBrits/COMS4507-Project/ ```
 
-Change to the COMS4507-Project site directory:
+Change to the COMS4507-Project site (and the other site directories) directory:
 
 ``` cd COMS4507-Project/site ```
 
 Install the projects dependencies using:
 
-``` npm install ```
+``` npm install express --save```
+``` npm install express-session --save```
+``` Npm install express-rate-limit —save```
+``` npm install sqlite3 --save```
+``` npm install bcrypt --save```
 
 And to run the webserver:
 
 ``` node server.js ```
 
-If successful, you should see the following message: Server listening at localhost:3000. This means that a local web server is now running and is listening for requests at localhost:3000. Open your browser and click the link.
+If successful, you should see the following message: App is listening on port 3000. This means that a local web server is now running and is listening for requests at localhost:3000. Open your browser and click the link.
 
-<h2>Vulnerabilities</h2>
+<h2>Vulnerabilities Present Within the Original Site</h2>
 <h2>Broken Access Control</h2>
 
 How [OWASP](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) describes Broken Access Control:
